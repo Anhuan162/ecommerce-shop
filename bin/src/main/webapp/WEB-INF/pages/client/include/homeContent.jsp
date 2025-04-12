@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script src="<c:url value='/js/client/homeAjax.js'/>" ></script>
 		   <!--start-image-slider---->
 					<div class="wrap">
 					<div class="image-slider">
@@ -35,7 +35,7 @@
 		    	</div>
 		    	
 		    <div class="content-grids">
-		    	<h4>Chọn bởi LT SHOP</h4>
+		    	<h4>DANH SÁCH LAPTOP MỚI NHẤT</h4>
 		    
 			</div>
 			
@@ -44,22 +44,11 @@
 		    	</div>
 		    	<div class="content-sidebar">
 		    		<h4>Danh mục</h4>
-						<ul>
-							<li><a href="#">Apple (Macbook)</a></li>
-							<li><a href="#">Asus</a></li>
-							<li><a href="#">Acer</a></li>
-							<li><a href="#">Dell</a></li>
-							<li><a href="#">HP</a></li>
-							<li><a href="#">Lenovo</a></li>
-							<li><a href="#">MSI</a></li>
-							<li><a href="#">Masstel</a></li>
-							<li><a href="#">Haier </a></li>
-							
+						<ul id="danhmuc">
+						
 						</ul>
 		    	</div>
 		    </div>
 		    <div class="clear"> </div>
 		    </div>
 		    
-		    
-<script src="<c:url value='/js/client/homeAjax.js'/>" ></script>	    

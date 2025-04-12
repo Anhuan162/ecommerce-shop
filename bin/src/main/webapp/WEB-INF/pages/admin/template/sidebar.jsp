@@ -18,22 +18,21 @@
           </div>
         </div>
 
-        <ul class="nav navbar-nav side-bar">
-        
-          <li class="side-bar  tmargin">
-            <a href='<c:url value="/admin/san-pham"/>' >
-              <span class="glyphicon glyphicon-star">&nbsp;</span>Quản lý Sản phẩm</a>
-          </li>
- 
-
-          <li class="side-bar">
+        <ul class="nav navbar-nav side-bar">       
+         
+          <li class="side-bar tmargin">
             <a href="<c:url value='/admin/don-hang' />">
-              <span class="glyphicon glyphicon-certificate">&nbsp;</span>Quản lý Đơn hàng</a>
+              <span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Quản lý Đơn hàng</a>
           </li>
-          
+        
+          <li class="side-bar">
+            <a href='<c:url value="/admin/san-pham"/>' >
+              <span class="glyphicon glyphicon-folder-open">&nbsp;</span>Quản lý Sản phẩm</a>
+          </li>
+        
           <li class="side-bar">
             <a href='<c:url value="/admin/danh-muc"/>'>
-              <span class="glyphicon glyphicon-list">&nbsp;</span>Quản lý Danh Mục</a>
+              <span class="glyphicon glyphicon-tasks">&nbsp;</span>Quản lý Danh Mục</a>
           </li>
           
           <li class="side-bar">
@@ -43,12 +42,17 @@
 
           <li class="side-bar main-menu">
             <a href="<c:url value='/admin/tai-khoan' />">
-              <span class="glyphicon glyphicon-signal">&nbsp;</span>Quản lý Tài khoản</a>
+              <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Tài khoản</a>
           </li>
           
           <li class="side-bar main-menu">
             <a href="<c:url value='/admin/lien-he' />">
-              <span class="glyphicon glyphicon-signal">&nbsp;</span>Quản lý Liên Hệ</a>
+              <span class="glyphicon glyphicon-envelope">&nbsp;</span>Quản lý Liên Hệ</a>
+          </li>
+          
+          <li class="side-bar main-menu">
+            <a href="<c:url value='/admin/thong-ke' />">
+              <span class="glyphicon glyphicon-signal">&nbsp;</span>Thống kê</a>
           </li>
           
           <li class="side-bar">
