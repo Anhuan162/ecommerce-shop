@@ -36,8 +36,8 @@ public class DonHangServiceImpl implements DonHangService {
 			builder.and(QDonHang.donHang.trangThaiDonHang.eq(trangThaiDon));
 		}
 
-		if (!tuNgay.equals("") && tuNgay != null) {
-			if (trangThaiDon.equals("") || trangThaiDon.equals("Đang chờ giao") || trangThaiDon.equals("Đã hủy")) {
+		if (!tuNgay.isEmpty()) {
+			if (trangThaiDon.isEmpty() || trangThaiDon.equals("Đang chờ giao") || trangThaiDon.equals("Đã hủy")) {
 				builder.and(QDonHang.donHang.ngayDatHang.goe(formatDate.parse(tuNgay)));
 			} else if (trangThaiDon.equals("Đang giao")) {
 				builder.and(QDonHang.donHang.ngayGiaoHang.goe(formatDate.parse(tuNgay)));
@@ -46,8 +46,8 @@ public class DonHangServiceImpl implements DonHangService {
 			}
 		}
 
-		if (!denNgay.equals("") && denNgay != null) {
-			if (trangThaiDon.equals("") || trangThaiDon.equals("Đang chờ giao") || trangThaiDon.equals("Đã hủy")) {
+		if (!denNgay.isEmpty()) {
+			if (trangThaiDon.isEmpty() || trangThaiDon.equals("Đang chờ giao") || trangThaiDon.equals("Đã hủy")) {
 				builder.and(QDonHang.donHang.ngayDatHang.loe(formatDate.parse(denNgay)));
 			} else if (trangThaiDon.equals("Đang giao")) {
 				builder.and(QDonHang.donHang.ngayGiaoHang.loe(formatDate.parse(denNgay)));
@@ -66,7 +66,7 @@ public class DonHangServiceImpl implements DonHangService {
 
 	@Override
 	public DonHang findById(long id) {
-		return donHangRepo.findById(id).get();
+		return donHangRepo.findById(id).orElseThrow();
 	}
 
 	@Override
@@ -100,11 +100,11 @@ public class DonHangServiceImpl implements DonHangService {
 		
 		builder.and(QDonHang.donHang.shipper.eq(shipper));
 
-		if (!trangThaiDon.equals("")) {
+		if (!trangThaiDon.isEmpty()) {
 			builder.and(QDonHang.donHang.trangThaiDonHang.eq(trangThaiDon));
 		}
 
-		if (!tuNgay.equals("") && tuNgay != null) {
+		if (!tuNgay.isEmpty()) {
 			if (trangThaiDon.equals("Đang giao")) {
 				builder.and(QDonHang.donHang.ngayGiaoHang.goe(formatDate.parse(tuNgay)));
 			} else { // hoàn thành
@@ -112,7 +112,7 @@ public class DonHangServiceImpl implements DonHangService {
 			}
 		}
 
-		if (!denNgay.equals("") && denNgay != null) {
+		if (!denNgay.isEmpty()) {
 			if (trangThaiDon.equals("Đang giao")) {
 				builder.and(QDonHang.donHang.ngayGiaoHang.loe(formatDate.parse(denNgay)));
 			} else { // hoàn thành

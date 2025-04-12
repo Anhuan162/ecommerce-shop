@@ -102,7 +102,7 @@
 					<li><a href="<%=request.getContextPath()%>/">Trang chủ</a></li>
 
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cửa hàng <span class="caret"></span></a>
-						<ul class="dropdown-menu" style="background: #94cb32" id="danhmuc2">
+						<ul class="dropdown-menu" style="background: #94cb32" id="danhmuc">
 						</ul></li>
 					<li><a href="<%=request.getContextPath()%>/shipping">Miễn
 							phí vận chuyển</a></li>
