@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 public class GioHang {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private String tong_tien;

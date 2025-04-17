@@ -46,3 +46,17 @@ body {
 .has-error {
     color: red
 }
+
+/* Logo container */
+.logo {
+    float: left;
+    padding: 10px 0;
+}
+
+/* Logo image */
+.logo img {
+    height: 60px; /* điều chỉnh chiều cao theo ý bạn */
+    width: auto;
+    object-fit: contain;
+    display: block;
+}

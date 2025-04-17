@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class HangSanXuat {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@NotEmpty(message="Tên hãng sản xuất không được trống")

@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class DanhMuc {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@NotEmpty(message="Tên danh mục không được trống")

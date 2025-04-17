@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class DonHang {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@OneToMany(mappedBy = "donHang")

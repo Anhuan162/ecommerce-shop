@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class LienHe {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String emailLienHe;
