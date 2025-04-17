@@ -1,10 +1,11 @@
 /* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,u,i,dl,dt,dd,ol,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0px;padding:0px;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table{border-collapse:collapse;border-spacing:0;}
+
 /* start editing from here */
 a{text-decoration:none;}
 .txt-rt{text-align:right;}/* text align right */
@@ -18,10 +19,92 @@ a{text-decoration:none;}
 .vertical-base{	vertical-align:baseline;}/* vertical align baseline */
 .vertical-top{	vertical-align:top;}/* vertical align top */
 .underline{	padding-bottom:5px;	border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
-nav.vertical ul li{	display:block;}/* vertical menu */
-nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+
 img{max-width:100%;}
 /*end reset*/
+
+.border-div{
+	border-bottom:1px solid grey;
+}
+.border-p{
+	border-bottom:1px solid grey;
+	width:100%;
+	
+}
+
+.table-cart-checkout{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+.table-cart-checkout td, .table-cart-checkout th {
+    border: 1px solid #ddd;
+    padding: 8px;
+     text-align: center; 
+    vertical-align: middle;
+}
+
+
+
+.table-cart-checkout th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+   
+   	background-color: #f2f2f2
+   	 text-align: center; 
+    vertical-align: middle;
+}
+
+.fix-size-img{
+	width: 100px;
+	height: 100px;
+	
+ 	
+}
+
+.navbar-color{
+    padding: 12px 0px;
+    margin-top: 16px;
+	background: rgb(196, 188, 188);
+	
+}
+#main-navbar ul li a{
+	
+	display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+   
+    font-weight: bold;
+    padding: 10px 28px;
+    text-transform: uppercase;
+}
+
+#main-navbar ul{
+	float:right;
+	width: 80%;
+	
+}
+#main-navbar a:hove{
+	background-color::#3B3B3B3; color:#f00; text-align:center; height: 50px;  list-style-type: none;
+}
+
+.dropdown-content{
+	text-align: justify;
+	text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 body{
 	background:#F9F9F9;
 }

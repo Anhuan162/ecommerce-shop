@@ -23,16 +23,16 @@ $(document).ready(function(){
     };
     
 
-	ajaxGet();	
+	ajaxGet(1);	
 	
 	// do get
-	function ajaxGet(){
+	function ajaxGet(page){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/danh-muc/all",
+			url: "http://localhost:8080/ecommerceshop/api/danh-muc/all" + "?page=" + page,
 			success: function(result){
-				$.each(result, function(i, danhMuc){
-					var danhMucRow = '<tr>' +
+				$.each(result.content, function(i, danhMuc){
+					var danhMucRow = '<tr style="text-align: center;">' +
 					                  '<td width="20%">' + danhMuc.id + '</td>' +
 					                  '<td>' + danhMuc.tenDanhMuc + '</td>' +
 					                  '<td>'+'<input type="hidden" value=' + danhMuc.id + '>'
@@ -40,7 +40,21 @@ $(document).ready(function(){
 					                     '   <button class="btn btn-danger btnXoaDanhMuc">Xóa</button></td>'
 				                      '</tr>';
 					$('.danhMucTable tbody').append(danhMucRow);
-				});			
+				});		
+				
+				if(result.totalPages > 1 ){
+					for(var numberPage = 1; numberPage <= result.totalPages; numberPage++) {
+						var li = '<li class="page-item "><a class="pageNumber">'+numberPage+'</a></li>';
+					    $('.pagination').append(li);
+					};				
+					
+					// active page pagination
+			    	$(".pageNumber").each(function(index){	
+			    		if($(this).text() == page){
+			    			$(this).parent().removeClass().addClass("page-item active");
+			    		}
+			    	});
+				};
 			},
 			error : function(e){
 				alert("Error: ",e);
@@ -66,13 +80,12 @@ $(document).ready(function(){
 	function ajaxPost(){
     	// PREPARE FORM DATA
     	var formData = { tenDanhMuc : $("#tenDanhMuc").val() } ;
-    	console.log($("#tenDanhMuc").val());
     	// DO POST
     	$.ajax({
     		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/danh-muc/save",
+			url : "http://localhost:8080/ecommerceshop/api/danh-muc/save",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -99,10 +112,9 @@ $(document).ready(function(){
 		event.preventDefault();
 		$('.danhMucForm #id').prop("disabled", true);
 		var danhMucId = $(this).parent().find('input').val();
-		console.log(danhMucId);
 		$('#form').removeClass().addClass("updateForm");
 		$('#form #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateForm");
-		var href = "http://localhost:8080/laptopshop/api/danh-muc/"+danhMucId;
+		var href = "http://localhost:8080/ecommerceshop/api/danh-muc/"+danhMucId;
 		$.get(href, function(danhMuc, status) {
 			$('.updateForm #id').val(danhMuc.id);
 			$('.updateForm #tenDanhMuc').val(danhMuc.tenDanhMuc);
@@ -133,7 +145,7 @@ $(document).ready(function(){
     		async:false,
 			type : "PUT",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/danh-muc/update",
+			url : "http://localhost:8080/ecommerceshop/api/danh-muc/update",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -165,12 +177,13 @@ $(document).ready(function(){
 		if(confirmation){
 		  $.ajax({
 			  type : "DELETE",
-			  url : "http://localhost:8080/laptopshop/api/danh-muc/delete/" + danhMucId,
+			  url : "http://localhost:8080/ecommerceshop/api/danh-muc/delete/" + danhMucId,
 			  success: function(resultMsg){
-				 workingObject.closest("tr").remove();
+				 resetDataForDelete();
 				 alert("Xóa thành công");
 			  },
 			  error : function(e) {
+				 alert("Không thể xóa danh mục này ! Hãy kiểm tra lại");
 				 console.log("ERROR: ", e);
 			  }
 		  });
@@ -180,8 +193,35 @@ $(document).ready(function(){
     // reset table after post, put
     function resetData(){
     	$('.danhMucTable tbody tr').remove();
-    	ajaxGet();
+    	var page = $('li.active').children().text();
+    	$('.pagination li').remove();
+    	ajaxGet(page);
     };
+    
+    // reset table after delete
+    function resetDataForDelete(){
+       	var count = $('.danhMucTable tbody').children().length;
+    	console.log("số cột " + count);
+    	$('.danhMucTable tbody tr').remove();
+    	var page = $('li.active').children().text();
+    	$('.pagination li').remove();
+    	console.log(page);
+    	if(count == 1){    	
+    		ajaxGet(page -1 );
+    	} else {
+    		ajaxGet(page);
+    	}
+
+    };
+    
+    // event khi click vào phân trang Danh mục
+	$(document).on('click', '.pageNumber', function (event){
+//		event.preventDefault();
+		var page = $(this).text();	
+    	$('.danhMucTable tbody tr').remove();
+    	$('.pagination li').remove();
+    	ajaxGet(page);	
+	});
     
     
     function removeElementsByClass(className){

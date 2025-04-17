@@ -3,116 +3,121 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="Frontend/css/checkout.css">
-<link rel="stylesheet" href="Frontend/css/cartTable.css">
-<style>
-html
-{
-    font-size: 100%;
-}
-</style>
+
+<title>Thanh toán</title>
 </head>
+
+<script type="text/javascript">	  
+	$(document).ready(function() { 
+		 $(".mytable .donGia .check").each(function() {
+			  var value = accounting.formatMoney($(this).text())+ ' VND';
+			  $(this).html(value);
+			});
+	  
+		 $(".mytable .total").each(function() {
+			  var value = accounting.formatMoney($(this).text()) + ' VND ';
+			  $(this).html(value);
+			});
+	  });
+	</script>
+
 <body>
 
 <div class="container">
-	<form action="" method="post" class="">
-	<div class="row">
-	<div>
+	<form method="POST" action="<%=request.getContextPath()%>/thankyou">
+	<div class = "row">
+	<br><br>
+		<c:if test="${pageContext.request.userPrincipal.name != null}">
+		<div class="col-md-3" >
+			<br>
+			<p class="border-p" style="line-height:1.5;"><b>Thông tin khách hàng</b></p>
+			
+			<p style="line-height:2;">Họ tên Quý khách </p>
+			<input size="27" value="${user.hoTen}" disabled>
+			
+			<p style="line-height:2;">Địa chỉ Email </p>
+			<input size="27" value="${user.email}" disabled>
+			
+			<p style="line-height:2;"> Số điện thoại </p>
+			<input size="27" value="${user.soDienThoai}" disabled>
+			
+			<p style="line-height:2;">Địa chỉ(số nhà, đường, tỉnh thành) </p>
+			<textarea rows="5" cols="29" disabled>${user.diaChi}</textarea>
+						
+			<br><br>
+		</div>
+		</c:if>
 		<div class="col-md-3">
-		<div class="">
-					<div class="">
-						<span>Thông tin khách hàng</span>
-					</div>
-					<div class="">
-						<div class="">
-							<label>Họ tên Quý khách *</label>
-							<input type="text" name="kh_name" value="" id="kh_name" required="required"  />
-						</div>
-						<div class="">
-							<label>Địa chỉ Email *</label>
-							<input type="text" name="kh_email" value="" id="kh_email" required="required"  />
-						</div>
-						<div class="">
-							<label>Số điện thoại *</label>
-							<input type="text" name="kh_phone" value="" id="kh_phone" required="required"  />
-						</div>
-						<div class="">
-							<label>Địa chỉ (số nhà, đường, tỉnh thành) *</label>
-							<textarea name="kh_address" cols="40" rows="10" id="kh_address" required="required" value="" ></textarea>
-						</div>
-					</div>
+			<br>
+			<p class="border-p" style="line-height:1.5;"><b>Thông tin nhận hàng</b></p>
+		
+			<p style="line-height:2;" >Họ tên người nhận hàng *</p>
+			<input size="27" name="hoTenNguoiNhan" required>
+			
+			<p style="line-height:2;">Số điện thoại *</p>
+			<input size="27" name="sdtNhanHang" required>
+			
+			
+			<p style="line-height:2;">Địa chỉ(số nhà, đường, tỉnh thành) *</p>
+			<textarea rows="5" cols="29" name="diaChiNhan" required></textarea>
 
-					</div>
-
+			<br><br>
+			<input type="hidden" id="tongGiaTri" name="tongGiaTri">
 		</div>
 		
-		<div class="col-md-3">
-		<div class="">
-						<span>Thông tin nhận hàng</span>
-					</div>
-					<div class="">
-						<div class="">
-							<label>Họ tên người nhận hàng *</label>
-							<input type="text" name="nh_name" value="" id="nh_name" required="required"  />
-						</div>
-						<div class="">
-							<label>Số điện thoại *</label>
-							<input type="text" name="nh_phone" value="" id="nh_phone" required="required"  />
-						</div>
-						<div class="">
-							<label>Địa chỉ (số nhà, đường, tỉnh thành) *</label>
-							<textarea name="nh_address" cols="40" rows="10" id="nh_address" required="required" value="" ></textarea>
-						</div>
-						<div class=""">
-							<label>Ghi chú</label>
-							<textarea name="nh_note" cols="40" rows="10" id="nh_note" value="" ></textarea>
-						</div>
-					</div>
-
-		</div>
-		</div>
-		<div class="col-md-3">
-		
-		</div>
-		
-		<div class="col-md-3">
-	
-	
-	<table class="tablecart">
-					<tr>
-						<td>Ảnh</td>
-						<td>Tên sản phẩm</td>
-						<td>Đơn giá</td>
-						<td>Tổng</td>
+		<div class="col-md-6">
+			<br>
+			<p class="border-p" style="line-height:1.5;"><b>Giỏ hàng</b></p>
+			<br>
+			
+				<table class="table-cart-checkout mytable">
+					 <tr>
+						    <th>Ảnh</th>
+						    <th>Tên sản phẩm</th>
+						    <th>Đơn giá</th>
+						    <th>Tổng</th>
 					</tr>
-					<tr>
-						<td><img src="h"></td>
-						<td>
-							<a href="">NZXT P240 Black - Orange/ White</a>
-						</td>
-						<td>1,319,000 VND x 1</td>
-						<td>
-							<b>1,319,000 VND</b>
-						</td>
+					<c:forEach items="${cart}" var="sanpham" >
+				
+					 <tr style="text-align: center;">
+						    <td>
+						    	<img src="/ecommerceshop/img/${sanpham.id}.png" alt="not found img" class="img-reponsive fix-size-img">
+						    </td>
+						    <td style="color:green">
+						    ${sanpham.tenSanPham}
+						    </td>
+						    
+						    <td class="donGia" >
+						    	<div class="check " style ="display: inline-block; ">${sanpham.donGia}</div> 
+						    	<div style="display: inline-block; "> x ${quanity[sanpham.id]}</div>
+						    </td>
+						    
+						    <td>
+						    	<div class="total">${sanpham.donGia*quanity[sanpham.id]}</div> 
+						    </td>
 					</tr>
-										<tr>
-						<td colspan="4">
-							<p class="cart_tongdonhang">Tổng giá trị đơn hàng : <span>1,319,000 VND</span></p>
-						</td>
-					</tr>
+					</c:forEach>
+					
 				</table>
-		<div class="">
-					<a class="paymentbtn backtocart" href="">Quay lại giỏ hàng</a>
-					<input type="submit" name="submitorder" class="" value="Gửi đơn hàng">
-				</div>
-	
-	
+			
+			
+			<br>
+			<p>Tổng giá trị đơn hàng:     <b id="ordertotal"> </b></p>
+			<br>
+			 &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
+			<a href="<%=request.getContextPath()%>/cart" class="btn btn-primary">Quay lại giỏ hàng</a>
+			 &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			 
+			<button class="btn btn-danger pull-center" type="submit" id="submit">Gửi đơn hàng</button>
+		
+			<br><br>
+		
 		</div>
 	
 	</div>
-		
 	</form>
 </div>
+<script src="<c:url value='/js/client/checkoutAjax.js'/>" ></script>	
 </body>
 </html>
 

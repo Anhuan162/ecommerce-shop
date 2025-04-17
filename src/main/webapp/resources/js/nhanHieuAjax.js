@@ -28,7 +28,7 @@ $(document).ready(function(){
 	function ajaxGet(page){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/nhan-hieu/all?page=" + page,
+			url: "http://localhost:8080/ecommerceshop/api/nhan-hieu/all?page=" + page,
 			success: function(result){
 				$.each(result.content, function(i, nhanHieu){
 					var nhanHieuRow = '<tr style="text-align: center;">' +
@@ -78,7 +78,7 @@ $(document).ready(function(){
     		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/nhan-hieu/save",
+			url : "http://localhost:8080/ecommerceshop/api/nhan-hieu/save",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -108,7 +108,7 @@ $(document).ready(function(){
 		
 		$('#form').removeClass().addClass("updateForm");
 		$('#form #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateForm");
-		var href = "http://localhost:8080/laptopshop/api/nhan-hieu/" + nhanHieuId;
+		var href = "http://localhost:8080/ecommerceshop/api/nhan-hieu/" + nhanHieuId;
 		$.get(href, function(nhanHieu, status) {
 			$('.updateForm #id').val(nhanHieu.id);
 			$('.updateForm #tenHangSanXuat').val(nhanHieu.tenHangSanXuat);
@@ -139,7 +139,7 @@ $(document).ready(function(){
     		async:false,
 			type : "PUT",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/nhan-hieu/update",
+			url : "http://localhost:8080/ecommerceshop/api/nhan-hieu/update",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -171,7 +171,7 @@ $(document).ready(function(){
 		if(confirmation){
 		  $.ajax({
 			  type : "DELETE",
-			  url : "http://localhost:8080/laptopshop/api/nhan-hieu/delete/" + nhanHieuId,
+			  url : "http://localhost:8080/ecommerceshop/api/nhan-hieu/delete/" + nhanHieuId,
 			  success: function(resultMsg){
 				 resetDataForDelete();
 				 alert("Xóa thành công");

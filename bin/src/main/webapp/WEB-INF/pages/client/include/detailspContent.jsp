@@ -3,7 +3,13 @@
 <head>
 <link rel="stylesheet" href="Frontend/css/detailsp.css">
 </head>
-	
+	<script type="text/javascript">	  
+	$(document).ready(function() { 
+	  	var priceConvert = accounting.formatMoney(${sp.getDonGia()})+' VND';
+		document.getElementById("priceConvert").innerHTML= priceConvert;
+		  
+	  });
+	</script>
 <body>
 	<div class="container">
 		<div class="card">
@@ -12,7 +18,7 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="/laptopshop/img/${sp.getId()}.png" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="/ecommerceshop/img/${sp.getId()}.png" /></div>
 						</div>		
 					</div>
 					<div class="details col-md-6">
@@ -37,11 +43,13 @@
 						<c:if test = "${sp.getDungLuongPin().length() > 0}">
 							<p class="product-description">Dung lượng pin: ${sp.getDungLuongPin()}</p>
 						</c:if>
-						<p class="product-description"><span class="important">Thông tin chung:</span> ${sp.getThongTinChung()}</p>
-						<p class="product-description"><span class="important">Bảo hành:</span> ${sp.getThongTinBaoHanh()}</p>
-						<h4 class="price">Giá bán: <span>${sp.getDonGia()} VND</span></h4>
+						<p class="product-description">Hãng sản xuất: ${sp.hangSanXuat.tenHangSanXuat}</p>
+						<p class="product-description"><span class="important">THÔNG TIN CHUNG:</span> ${sp.getThongTinChung()}</p>
+						<p class="product-description"><span class="important">BẢO HÀNH:</span> ${sp.getThongTinBaoHanh()}</p>
+						<h4 class="price" id ="blabla">Giá bán: <span id="priceConvert"></span></h4>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button" onclick='window.alert("Đã thêm sản phẩm vào giỏ hàng");'>Giỏ hàng</button>
+							<button class="add-to-cart btn btn-warning" type="button">
+							<span class="glyphicon glyphicon-shopping-cart pull-center"></span> Giỏ hàng</button>
 						</div>
 					</div>
 				</div>

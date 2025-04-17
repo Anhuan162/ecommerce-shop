@@ -3,7 +3,7 @@ function addToCart(id)
 	{
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/gio-hang/addSanPham?id="+id,
+			url: "http://localhost:8080/ecommerceshop/api/gio-hang/addSanPham?id="+id,
 			success: function(result){
 				if(result.status == "false")
 				{
@@ -29,7 +29,7 @@ $(document).ready(function(){
 	function ajaxGet(){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/san-pham/latest",
+			url: "http://localhost:8080/ecommerceshop/api/san-pham/latest",
 			success: function(result){
 				var content;
 				var section = '<div class="section group">';
@@ -42,7 +42,7 @@ $(document).ready(function(){
 						{
 							content = '';
 							content = '<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img style="width: 300px; height: 238px" src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img style="width: 300px; height: 238px" src="/ecommerceshop/img/'+sanpham.id+'.png">' +
 									'<h3 style="font-weight: bold;">'+sanpham.tenSanPham+'</h3></a>' +
 									'<h3>'+accounting.formatMoney(sanpham.donGia)+' VND</h3>'+
 									'<button onClick="addToCart('+sanpham.id+')" class="btn btn-warning"><span class= "glyphicon glyphicon-shopping-cart pull-center"></span> Giỏ hàng</button>'+
@@ -51,7 +51,7 @@ $(document).ready(function(){
 						}else 
 						{
 							content = content+'<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img style="width: 300px; height: 238px" src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img style="width: 300px; height: 238px" src="/ecommerceshop/img/'+sanpham.id+'.png">' +
 									'<h3 style="font-weight: bold;">'+sanpham.tenSanPham+'</h3><a/>' +
 									'<h3>'+accounting.formatMoney(sanpham.donGia)+' VND</h3>'+
 									'<button onClick="addToCart('+sanpham.id+')" class="btn btn-warning"><span class= "glyphicon glyphicon-shopping-cart pull-center"></span> Giỏ hàng</button>'+
@@ -69,7 +69,7 @@ $(document).ready(function(){
 						{
 							content = '';
 							content = '<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img style="width: 300px; height: 238px" src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img style="width: 300px; height: 238px" src="/ecommerceshop/img/'+sanpham.id+'.png">' +
 									'<h3 style="font-weight: bold;">'+sanpham.tenSanPham+'</h3>></a>' +
 									'<h3>'+accounting.formatMoney(sanpham.donGia)+' VND</h3>'+
 									'<button onClick="addToCart('+sanpham.id+')" class="btn btn-warning"><span class= "glyphicon glyphicon-shopping-cart pull-center"></span> Giỏ hàng</button>'+
@@ -80,7 +80,7 @@ $(document).ready(function(){
 						}else
 						{
 							content = content+'<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img style="width: 300px; height: 238px" src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img style="width: 300px; height: 238px" src="/ecommerceshop/img/'+sanpham.id+'.png">' +
 									'<h3 style="font-weight: bold;">'+sanpham.tenSanPham+'</h3></a>' +
 									'<h3>'+accounting.formatMoney(sanpham.donGia)+' VND</h3>'+
 									'<button  onClick="addToCart('+sanpham.id+')" class="btn btn-warning"><span class= "glyphicon glyphicon-shopping-cart pull-center"></span> Giỏ hàng</button>'+

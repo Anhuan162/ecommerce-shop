@@ -32,7 +32,7 @@
 		<div class="clear"> </div>
 		<div class="wrap">
 		<div class="copy-right">
-			<p>&copy; 2018 Laptop Store. All Rights Reserved | Design by Group 14- HUST </p>
+			<p>&copy; 2025 Ecommerce Store. All Rights Reserved | Design by Group 4 PTIT </p>
 		</div>
 		</div>
 		</div>

@@ -3,7 +3,7 @@ function changeQuanity(id,value,price)
 	{
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/gio-hang/changSanPhamQuanity?id="+id+"&value="+value,
+			url: "http://localhost:8080/ecommerceshop/api/gio-hang/changSanPhamQuanity?id="+id+"&value="+value,
 			success: function(result){
 				calculatePrice(id,value,price);
 				calculateOrder();
@@ -20,7 +20,7 @@ function deleteFromCart(id)
 {
 	$.ajax({
 		type: "GET",		
-		url: "http://localhost:8080/laptopshop/api/gio-hang/deleteFromCart?id="+id,
+		url: "http://localhost:8080/ecommerceshop/api/gio-hang/deleteFromCart?id="+id,
 		success: function(result){
 		    var element = document.getElementById("item"+id);
 			element.parentNode.removeChild(element);

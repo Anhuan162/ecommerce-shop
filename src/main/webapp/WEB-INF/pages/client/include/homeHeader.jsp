@@ -47,7 +47,7 @@
 		<!----start-Header---->
 		<div class="header">
 			<div class="search-bar">
-				<form action="/laptopshop/search">
+				<form action="/ecommerceshop/search">
 					<input type="text" name="name"><input type="submit"
 						value="Search" />
 				</form>

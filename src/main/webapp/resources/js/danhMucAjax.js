@@ -29,7 +29,7 @@ $(document).ready(function(){
 	function ajaxGet(page){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/danh-muc/all" + "?page=" + page,
+			url: "http://localhost:8080/ecommerceshop/api/danh-muc/all" + "?page=" + page,
 			success: function(result){
 				$.each(result.content, function(i, danhMuc){
 					var danhMucRow = '<tr style="text-align: center;">' +
@@ -85,7 +85,7 @@ $(document).ready(function(){
     		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/danh-muc/save",
+			url : "http://localhost:8080/ecommerceshop/api/danh-muc/save",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -114,7 +114,7 @@ $(document).ready(function(){
 		var danhMucId = $(this).parent().find('input').val();
 		$('#form').removeClass().addClass("updateForm");
 		$('#form #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateForm");
-		var href = "http://localhost:8080/laptopshop/api/danh-muc/"+danhMucId;
+		var href = "http://localhost:8080/ecommerceshop/api/danh-muc/"+danhMucId;
 		$.get(href, function(danhMuc, status) {
 			$('.updateForm #id').val(danhMuc.id);
 			$('.updateForm #tenDanhMuc').val(danhMuc.tenDanhMuc);
@@ -145,7 +145,7 @@ $(document).ready(function(){
     		async:false,
 			type : "PUT",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/danh-muc/update",
+			url : "http://localhost:8080/ecommerceshop/api/danh-muc/update",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -177,7 +177,7 @@ $(document).ready(function(){
 		if(confirmation){
 		  $.ajax({
 			  type : "DELETE",
-			  url : "http://localhost:8080/laptopshop/api/danh-muc/delete/" + danhMucId,
+			  url : "http://localhost:8080/ecommerceshop/api/danh-muc/delete/" + danhMucId,
 			  success: function(resultMsg){
 				 resetDataForDelete();
 				 alert("Xóa thành công");

@@ -3,7 +3,7 @@ function changeQuanity(id,value,price)
 	{
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/gio-hang/changSanPhamQuanity?id="+id+"&value="+value,
+			url: "http://localhost:8080/ecommerceshop/api/gio-hang/changSanPhamQuanity?id="+id+"&value="+value,
 			success: function(result){
 				calculatePrice(id,value,price);
 				calculateOrder();
@@ -20,7 +20,7 @@ function deleteFromCart(id)
 {
 	$.ajax({
 		type: "GET",		
-		url: "http://localhost:8080/laptopshop/api/gio-hang/deleteFromCart?id="+id,
+		url: "http://localhost:8080/ecommerceshop/api/gio-hang/deleteFromCart?id="+id,
 		success: function(result){
 		    var element = document.getElementById("item"+id);
 			element.parentNode.removeChild(element);
@@ -36,6 +36,7 @@ function deleteFromCart(id)
 function calculatePrice(id,value,price)
 {
 	var element = document.getElementById("item"+id+"_total");
+
 	element.innerHTML = value * price;
 }
 
@@ -47,5 +48,6 @@ function calculateOrder()
 		res = res + parseInt(element[i].textContent);
 	}
 	var element2 = document.getElementById("ordertotal");
-	element2.innerHTML = res;
+	resConvert = accounting.formatMoney(res);
+	element2.innerHTML = resConvert;
 }

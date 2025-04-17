@@ -9,7 +9,7 @@ $(document).ready(function() {
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/laptopshop/api/lien-he/all" + '?page=' + page,
+			url: "http://localhost:8080/ecommerceshop/api/lien-he/all" + '?page=' + page,
 			success: function(result){
 				$.each(result.content, function(i, lienHe){
 					var lienHeRow = '<tr>' +
@@ -81,16 +81,19 @@ $(document).ready(function() {
 	$(document).on('click', '.btnChiTiet', function (event){
 		event.preventDefault();
 		var lienHeId =  $(this).parent().prev().children().val();
-		var href = "http://localhost:8080/laptopshop/api/lien-he/"+lienHeId;
+		var href = "http://localhost:8080/ecommerceshop/api/lien-he/"+lienHeId;
 		$.get(href, function(lienHe) {
 			$('#noiDungLienHe').html("<strong>Nội dung liên hệ</strong>: <br> "+ lienHe.noiDungLienHe);
 			$('#ngayLienHe').html("<strong>Ngày liên hệ</strong>: "+ lienHe.ngayLienHe);
 			$('#email').html("<strong>Email liên hệ</strong>: "+ lienHe.emailLienHe);
-			$('#trangThai').html("<strong>Trạng thái</strong>: "+ lienHe.trangThaiLienHe);
+			$('#trangThai').html("<strong>Trạng thái</strong>: "+ lienHe.trangThai);
 			
 			if(lienHe.trangThai == "Đã trả lời"){
 			  $('#noiDungTraLoi').html("<strong>Nội dung trả lời</strong>: "+ lienHe.noiDungTraLoi);
 			  $('#ngayTraLoi').html("<strong>Ngày trả lời</strong>: "+ lienHe.ngayTraLoi);
+			} else {
+			    $('#noiDungTraLoi').html("");
+			    $('#ngayTraLoi').html("");	
 			}
 		});		
 		
@@ -102,18 +105,57 @@ $(document).ready(function() {
 	$(document).on('click', '.btnTraLoi', function (event){
 		event.preventDefault();
 		var lienHeId =  $(this).parent().prev().children().val();
-		var href = "http://localhost:8080/laptopshop/api/lien-he/"+lienHeId;
+		var href = "http://localhost:8080/ecommerceshop/api/lien-he/"+lienHeId;
 		$.get(href, function(lienHe) {
 			$('#ndLienHe').val(lienHe.noiDungLienHe);
 			$('#emailLienHe').val(lienHe.emailLienHe);
 		});
+		$('input[name=lienHeId]').val(lienHeId);
 		$("#lienHeModal").modal();
 	});
-
-	// event khi ẩn modal chi tiết
-//	$('#chiTietModal').on('hidden.bs.modal', function(e) {
-//		e.preventDefault();
-//		$("#chiTietForm p").text(""); // reset text thẻ p
-//		$('.chiTietTable tbody tr').remove();
-//	});
+	
+    $(document).on('click', '.btnSubmitTraLoi', function (event) {
+    	event.preventDefault();
+    	ajaxPostReply();
+		resetData();
+    });
+    
+	function ajaxPostReply(){
+    	// PREPARE FORM DATA
+    	var formData = { id : $('input[name=lienHeId]').val(),
+    			         noiDungTraLoi : $('textarea[name=noiDungTraLoi]').val(),
+    	                 tieuDe : "Trả lời câu hỏi:" + $('textarea[name=noiDungLienHe]').val(),
+    			         diaChiDen: $('input[name=emailLienHe]').val()} ;
+    	console.log(formData);
+    	// DO POST
+    	$.ajax({
+    		async:false,
+			type : "POST",
+			contentType : "application/json",
+			url : "http://localhost:8080/ecommerceshop/api/lien-he/reply",
+			data : JSON.stringify(formData),
+			success : function(response) {
+				if(response.status == "success"){
+					$('#lienHeModal').modal('hide');
+					alert("Trả lời thành công");
+				} else {
+			    	$('textarea').next().remove();
+		            $.each(response.errorMessages, function(key,value){
+		   	            $('textarea[name='+ key +']').after('<span class="error">'+value+'</span>');
+		            });
+				}
+		    	
+			},
+			error : function(e) {
+				alert("Không thể trả lời! Hãy thử lại")
+				console.log("ERROR: ", e);
+			}
+		}); 
+    };
+    
+	// event khi hide modal
+	$('#lienHeModal').on('hidden.bs.modal', function () {
+		$('textarea').next().remove();
+	});
+    
 });

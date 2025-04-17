@@ -14,7 +14,7 @@
 	<jsp:include page="template/sidebar.jsp"></jsp:include>
 
 	<div class="col-md-9 animated bounce">
-		<h3 class="page-header">Quản lý tài khoản</h3>
+		<h3 class="page-header">Quản lý Tài khoản</h3>
 
 		<button class="btn btn-success btnThemTaiKhoan">Thêm mới tài
 			khoản</button>

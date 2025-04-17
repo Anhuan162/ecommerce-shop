@@ -7,7 +7,7 @@ $(document).ready(function(){
 		
 		console.log(nguoiDungId);
 		
-		var href = "http://localhost:8080/laptopshop/api/profile/"+nguoiDungId;
+		var href = "http://localhost:8080/ecommerceshop/api/profile/"+nguoiDungId;
 		$.get(href, function(nguoiDung, status) {
 			populate('.formCapNhat', nguoiDung);
 		});
@@ -44,13 +44,13 @@ $(document).ready(function(){
 	     		async:false,
 	 			type : "POST",
 	 			contentType : "application/json",
-	 			url : "http://localhost:8080/laptopshop/api/profile/doiMatKhau",
+	 			url : "http://localhost:8080/ecommerceshop/api/profile/doiMatKhau",
 	 			data : JSON.stringify(data),
 	 			success : function(response) {
 	 				if(response.status == "success"){
 	 					$('#doiMKModal').modal('hide');
 	 					alert("Đổi mật khẩu thành công. Bạn phải đăng nhập lại để xác nhận");
-	 					location.href = "http://localhost:8080/laptopshop/logout";
+	 					location.href = "http://localhost:8080/ecommerceshop/logout";
 	 				} else {
 	 			    	$('input').next().remove();
 	 		            $.each(response.errorMessages, function(key,value){

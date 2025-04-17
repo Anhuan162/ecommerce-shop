@@ -39,17 +39,15 @@
 					</c:forEach>
 				</select>
 			</div>
-			&nbsp;&nbsp;
 
 			<div class="form-group">
 				<select class="form-control" name="hangSXId" id="hangSanXuat">
-					<option value="">Tất cả</option>
+					<option value="">Tất cả hãng sản xuất</option>
 					<c:forEach var="nhanHieu" items="${listNhanHieu }">
 						<option value="${nhanHieu.id}">${nhanHieu.tenHangSanXuat}</option>
 					</c:forEach>
 				</select>
 			</div>
-			&nbsp;&nbsp;
 
 			<div class="form-group">
 				<select class="form-control" name="donGia" id="price">
@@ -73,8 +71,18 @@
 			<button type="button" class="btn btn-primary" id="btnDuyetSanPham">Duyệt
 				sản phẩm</button>
 		</form>
+
+		<div class="form-group form-inline"
+			style="float: right; margin-right: 10px; top: -33px; position: relative;"">
+			<input class="form-control" type="text" id="searchById"
+				placeholder="Nhập mã để tìm nhanh"> <span
+				class="glyphicon glyphicon-search" aria-hidden="true"
+				style="left: -30px; top: 4px;"></span>
+		</div>
+
 		<hr />
-		<table class="table table-hover sanPhamTable " style="text-align: center;">
+		<table class="table table-hover sanPhamTable "
+			style="text-align: center;">
 			<thead>
 				<tr>
 					<th>Hình ảnh</th>
@@ -297,6 +305,61 @@
 					<!-- /.modal-content -->
 				</div>
 				<!-- /.modal-dialog -->
+			</div>
+		</form>
+	</div>
+
+	<div class="row col-md-10">
+		<form class="chiTietForm">
+			<div class="modal fade" id="chiTietModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog " role="document" style="width: 60%">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="title" style="text-align: center; font-weight: bolder;">Chi tiết sản phẩm</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+								<div class="card">
+									<div class="container-fliud">
+										<div class="wrapper row">
+											<div class="preview col-md-6">
+
+												<div class="preview-pic tab-content">
+													<div class="tab-pane active" id="pic-1">
+														<img style="width: 350px; height: 350px" class="hinhAnh" />
+													</div>
+												</div>
+											</div>
+											<div class="details col-md-6" style="font-size: 16px">
+												<p class="maSanPham"></p>
+												<p class="tenSanPham"></p>
+												<p class="hangSangXuat"></p>
+												<p class="cpu"></p>
+												<p class="ram"></p>
+												<p class="thietKe"></p>
+												<p class="heDieuHanh"></p>
+												<p class="manHinh"></p>
+												<p class="dungLuongPin"></p>
+												<p class="thongTinChung"></p>
+												<p class="baoHanh"></p>
+												<p class="donGia"></p>
+												<p class="donViKho"></p>
+												<p class="donViBan"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Đóng</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</form>
 	</div>

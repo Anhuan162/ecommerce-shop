@@ -33,6 +33,9 @@
         </tbody>
 
       </table>
+      
+      <ul class="pagination">
+	  </ul>
     </div>
     <div class="row col-md-6">
 		<form class="nhanHieuForm" id="form">
