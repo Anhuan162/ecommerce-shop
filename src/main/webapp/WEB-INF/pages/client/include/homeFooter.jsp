@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
+
+<script async
+		src="https://widget.taggo.chat/v2.js"
+		data-taggo-botid="68007b0823a772c204155514"></script>
+
+
 <div class="footer">
 			<div class="wrap">
 			<div class="section group">
@@ -22,7 +29,7 @@
 					<h3>Follow Us:</h3>
 					 <ul>
 					 	<li><a href="#"><img src="Frontend/img/twitter.png" title="twitter" />Twitter</a></li>
-					 	<li><a href="#"><img src="Frontend/img/facebook.png" title="Facebook" />Facebook</a></li>
+					 	<li><a href="https://www.facebook.com/people/Ecommerce/61574974997236/"><img src="Frontend/img/facebook.png" title="Facebook" />Facebook</a></li>
 					 	<li><a href="#"><img src="Frontend/img/rss.png" title="Rss" />Rss</a></li>
 					 </ul>
 				</div>
