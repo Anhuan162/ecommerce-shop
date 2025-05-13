@@ -22,7 +22,7 @@
 					<h3>Follow Us:</h3>
 					 <ul>
 					 	<li><a href="#"><img src="Frontend/img/twitter.png" title="twitter" />Twitter</a></li>
-					 	<li><a href="#"><img src="Frontend/img/facebook.png" title="Facebook" />Facebook</a></li>
+					 	<li><a href="https://www.facebook.com/people/Ecommerce/61574974997236/"><img src="Frontend/img/facebook.png" title="Facebook" />Facebook</a></li>
 					 	<li><a href="#"><img src="Frontend/img/rss.png" title="Rss" />Rss</a></li>
 					 </ul>
 				</div>

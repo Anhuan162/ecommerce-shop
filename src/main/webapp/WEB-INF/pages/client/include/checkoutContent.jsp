@@ -39,7 +39,7 @@
 			<input size="27" value="${user.email}" disabled>
 			
 			<p style="line-height:2;"> Số điện thoại </p>
-			<input size="27" value="${user.soDienThoai}" disabled>
+			<input size="27" value="${user.soDienThoai}" disabled type="number">
 			
 			<p style="line-height:2;">Địa chỉ(số nhà, đường, tỉnh thành) </p>
 			<textarea rows="5" cols="29" disabled>${user.diaChi}</textarea>
@@ -108,7 +108,9 @@
 			<a href="<%=request.getContextPath()%>/cart" class="btn btn-primary">Quay lại giỏ hàng</a>
 			 &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 			 
-			<button class="btn btn-danger pull-center" type="submit" id="submit">Gửi đơn hàng</button>
+			<button class="btn btn-warning pull-center" type="submit" id="submit"> Thanh toán khi nhận hàng</button>
+			<button class="btn btn-danger " id="pay-online-button" type="button"><span
+					class="glyphicon glyphicon-check"></span> Thanh toán online</button>
 		
 			<br><br>
 		

@@ -91,10 +91,12 @@
 	<div class="top-header">
 		<div class="wrap">
 			<!----start-logo---->
-			<div class="logo">
-				<a href="<%=request.getContextPath()%>/"><img
-					src="Frontend/img/logo3.png" title="logo" /></a>
+			<div class="logo" style="height: 50px; align-items: center;">
+				<a href="<%=request.getContextPath()%>/">
+					<img src="Frontend/img/logoShop.png" title="logo" style="height: 100%; object-fit: contain;" />
+				</a>
 			</div>
+
 			<!----end-logo---->
 			<!----start-top-nav---->
 			<div class="top-nav">
