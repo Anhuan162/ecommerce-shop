@@ -17,7 +17,7 @@ public interface DonHangRepository extends JpaRepository<DonHang, Long>, Queryds
 			+ " DATE_FORMAT(dh.ngayNhanHang, '%Y') as year, sum(ct.soLuongNhanHang * ct.donGia) as total "
 			+ " from DonHang dh, ChiTietDonHang ct"
 			+ " where dh.id = ct.donHang.id and dh.trangThaiDonHang ='Hoàn thành'"
-			+ " group by DATE_FORMAT(dh.ngayNhanHang, '%Y%m')"
+			+ " group by DATE_FORMAT(dh.ngayNhanHang, '%m'), DATE_FORMAT(dh.ngayNhanHang, '%Y')"
 			+ " order by year asc" )
 	public List<Object> layDonHangTheoThangVaNam();
 	
