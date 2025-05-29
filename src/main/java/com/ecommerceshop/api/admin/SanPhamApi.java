@@ -3,6 +3,7 @@ package com.ecommerceshop.api.admin;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,6 +13,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
@@ -67,6 +70,35 @@ public class SanPhamApi {
 		return sanPhamService.getLatestSanPham();
 	}
 
+	// API mới với Paging
+	@GetMapping("/danhmuc/{danhMucId}/similar/{excludeId}/paging")
+	public ResponseEntity<Map<String, Object>> getSimilarProductsWithPaging(
+			@PathVariable Long danhMucId,
+			@PathVariable Long excludeId,
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size) {
+
+		try {
+			Page<SanPham> productsPage = sanPhamService.getSimilarProductsWithPaging(danhMucId, excludeId, page, size);
+
+			Map<String, Object> response = new HashMap<>();
+			response.put("products", productsPage.getContent());
+			response.put("currentPage", productsPage.getNumber());
+			response.put("totalItems", productsPage.getTotalElements());
+			response.put("totalPages", productsPage.getTotalPages());
+			response.put("hasNext", productsPage.hasNext());
+			response.put("hasPrevious", productsPage.hasPrevious());
+			response.put("isFirst", productsPage.isFirst());
+			response.put("isLast", productsPage.isLast());
+
+			return ResponseEntity.ok(response);
+		} catch (Exception e) {
+			Map<String, Object> errorResponse = new HashMap<>();
+			errorResponse.put("error", "Không thể lấy dữ liệu sản phẩm");
+			errorResponse.put("message", e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+		}
+	}
 	// lấy sản phẩm theo id
 	@GetMapping("/{id}")
 	public SanPham getSanPhamById(@PathVariable long id) {

@@ -22,7 +22,9 @@ public interface SanPhamService {
 	SanPham getSanPhamById(long id);
 	
 	List<SanPham> getLatestSanPham();
-	
+
+	Page<SanPham> getSimilarProductsWithPaging(Long danhMucId, Long excludeId, int page, int size);
+
 	Iterable<SanPham> getSanPhamByTenSanPhamWithoutPaginate(SearchSanPhamObject object);
 	
 	Page<SanPham> getSanPhamByTenSanPham(SearchSanPhamObject object,int page, int resultPerPage);

@@ -107,14 +107,6 @@ public class PaymentController {
         chiTietDonHangService.save(listDetailDH);
 
 
-
-
-
-
-
-
-
-
 //        String vnp_TxnRef = String.valueOf(System.currentTimeMillis());
         String vnp_TxnRef = getRandomNumber(8);
         String vnp_OrderInfo = "Thanh toan don hang:" + vnp_TxnRef;
